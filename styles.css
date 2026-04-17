@@ -1,0 +1,100 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(1200px 440px at 50% -110px, #dfe8ff 0%, #f4f7ff 56%, #edf3ff 100%);
+  color: #0f172a;
+}
+.top-panel {
+  min-height: 180px;
+  background: #185dfe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 28px 24px;
+  box-shadow: none;
+}
+.top-logo {
+  display: block;
+  width: min(460px, 92vw);
+  max-height: 130px;
+  height: auto;
+  object-fit: contain;
+  filter: none;
+}
+.container {
+  min-height: calc(100vh - 180px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 16px 60px;
+}
+.hero-card {
+  width: min(760px, 94vw);
+  background: #ffffff;
+  border: 1px solid #dde7ff;
+  border-radius: 20px;
+  padding: 34px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 22px 44px rgba(23, 67, 170, 0.12);
+}
+h1 {
+  margin: 0;
+  max-width: 760px;
+  text-align: center;
+  color: #102047;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.subtitle {
+  margin: 0 0 8px;
+  color: #3b4b73;
+  font-size: 16px;
+  text-align: center;
+}
+.actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.console-link {
+  color: #1348bf;
+  text-decoration: none;
+  font-weight: 700;
+  margin-top: 6px;
+  display: inline-block;
+}
+.console-link:hover {
+  text-decoration: underline;
+}
+.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  width: min(460px, 100%);
+  max-width: 100%;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 15px 18px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  color: #fff;
+  background: linear-gradient(135deg, #2159d7 0%, #0f6dff 100%);
+  cursor: pointer;
+  box-shadow: 0 9px 22px rgba(24, 72, 180, 0.22);
+  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.btn-primary {
+  appearance: none;
+  -webkit-appearance: none;
+}

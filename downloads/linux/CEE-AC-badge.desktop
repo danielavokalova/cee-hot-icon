@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=CEE Admin Console
+Comment=CEE Admin Console
+Exec=xdg-open https://bo.golibe.com/
+Icon=cee-badge.png
+Terminal=false
+Categories=Network;WebBrowser;
