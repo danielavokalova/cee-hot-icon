@@ -97,14 +97,15 @@ h1 {
   display: inline-block;
   text-align: center;
   text-decoration: none;
-  width: min(460px, 100%);
+  width: min(560px, 100%);
   max-width: 100%;
   border: 1px solid transparent;
   border-radius: 14px;
-  padding: 15px 18px;
-  font-size: 17px;
+  padding: 14px 18px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.1px;
+  white-space: nowrap;
   color: #fff;
   background: linear-gradient(135deg, #2159d7 0%, #0f6dff 100%);
   cursor: pointer;
