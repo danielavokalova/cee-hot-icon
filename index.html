@@ -26,17 +26,20 @@
   <header>
     <a class="logo" href="#">
       <svg width="74" height="74" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <defs><clipPath id="gc"><circle cx="48" cy="54" r="33"/></clipPath></defs>
+        <defs>
+          <mask id="m">
+            <!-- White = show globe, Black = transparent gap (blue background shows through) -->
+            <circle cx="50" cy="54" r="35" fill="white"/>
+            <path d="M 18,78 C 2,56 98,52 82,30" fill="none" stroke="black" stroke-width="11" stroke-linecap="round"/>
+            <path d="M 18,30 C 98,48 2,60 82,78" fill="none" stroke="black" stroke-width="11" stroke-linecap="round"/>
+          </mask>
+        </defs>
+        <!-- White globe with diagonal cuts showing blue through -->
+        <circle cx="50" cy="54" r="35" fill="white" mask="url(#m)"/>
         <!-- Outer ring -->
-        <circle cx="48" cy="54" r="36" fill="none" stroke="white" stroke-width="2.5"/>
-        <!-- Main swoosh — thick diagonal front arc -->
-        <path d="M 12,54 C 20,4 76,104 84,54"
-              fill="none" stroke="white" stroke-width="18" stroke-linecap="round" clip-path="url(#gc)"/>
-        <!-- Back arc — slightly thinner -->
-        <path d="M 12,54 C 20,104 76,4 84,54"
-              fill="none" stroke="white" stroke-width="14" stroke-linecap="round" clip-path="url(#gc)"/>
-        <!-- Airplane — upper right, ~38° -->
-        <g transform="translate(74, 20) rotate(-38) scale(0.20)">
+        <circle cx="50" cy="54" r="35" fill="none" stroke="white" stroke-width="3.5"/>
+        <!-- Airplane: upper right, 38° -->
+        <g transform="translate(75,19) rotate(-38) scale(0.21)">
           <path d="M -62,0 C -50,-13 34,-15 74,-2 C 34,11 -50,13 -62,0 Z" fill="white"/>
           <path d="M 4,-15 L 36,-58 L 62,-53 L 23,-11 Z" fill="white"/>
           <path d="M -52,-1 L -70,-28 L -55,-25 L -49,-1 Z" fill="white"/>
@@ -52,25 +55,28 @@
     <div class="card">
       <h1>Download your hot icon for CEE admin console</h1>
       <p class="subtitle">One click download. Place the shortcut on your desktop, then drag it to the taskbar.</p>
-      <button class="btn" onclick="downloadWindows()">Download CEE badge for windows</button>
-      <button class="btn" onclick="downloadLinux()">Download CEE badge for linux</button>
+      <button class="btn" onclick="dl('windows')">Download CEE badge for windows</button>
+      <button class="btn" onclick="dl('linux')">Download CEE badge for linux</button>
       <a href="https://bo.golibe.com/" class="direct-link" target="_blank">Direct link to CEE backoffice</a>
     </div>
   </main>
   <script>
-    function downloadWindows() {
-      var content = '[InternetShortcut]\r\nURL=https://bo.golibe.com/\r\nIconFile=https://danielavokalova.github.io/cee-hot-icon/icon.svg\r\nIconIndex=0\r\n';
+    function dl(os) {
+      var content, name;
+      if (os === 'windows') {
+        content = '[InternetShortcut]\r\nURL=https://bo.golibe.com/\r\n';
+        name = 'CEE-Admin-Console.url';
+      } else {
+        content = '[Desktop Entry]\nVersion=1.0\nType=Application\nName=CEE Admin Console\nExec=xdg-open https://bo.golibe.com/\nTerminal=false\n';
+        name = 'CEE-Admin-Console.desktop';
+      }
       var a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([content], {type:'text/plain'}));
-      a.download = 'CEE-Admin-Console.url';
+      a.href = URL.createObjectURL(new Blob([content], {type: 'text/plain'}));
+      a.download = name;
+      document.body.appendChild(a);
       a.click();
-    }
-    function downloadLinux() {
-      var content = '[Desktop Entry]\nVersion=1.0\nType=Application\nName=CEE Admin Console\nExec=xdg-open https://bo.golibe.com/\nIcon=https://danielavokalova.github.io/cee-hot-icon/icon.svg\nTerminal=false\n';
-      var a = document.createElement('a');
-      a.href = URL.createObjectURL(new Blob([content], {type:'application/octet-stream'}));
-      a.download = 'CEE-Admin-Console.desktop';
-      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
     }
   </script>
 </body>
